@@ -18,7 +18,7 @@ Raw data to describe an aspect of the object. Typically implemented using a stru
 
 #### System
 
-Each system runs continuously and preforms global actions on every entity that possesses a Component of the same type.
+Each system runs continuously and performs global actions on every entity that possesses a Component of the same type.
 
 Note: Possibility of implementing multi-threading here.
 
