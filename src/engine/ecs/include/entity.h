@@ -3,8 +3,11 @@
 
 #include <cstdint>
 
-typedef uint32_t Entity;
+#define INVALID_ENTITY 0
 
-static const Entity invalid_entity = 0;
+/**
+ * @brief An entity is just an id.
+ */
+typedef uint32_t Entity;
 
 #endif

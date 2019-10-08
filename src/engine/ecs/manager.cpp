@@ -1,7 +1,7 @@
 #include "include/manager.h"
 
 ECSManager::ECSManager() :
-    m_last_entity(invalid_entity),
+    m_last_entity(INVALID_ENTITY),
     m_entities(),
     m_stores(),
     m_systems() {
@@ -12,6 +12,11 @@ void ECSManager::add_system(const System::Ptr& system) {
         throw std::runtime_error("System should specify required components");
     }
     m_systems.push_back(system);
+}
+
+Entity ECSManager::create_entity() {
+    m_entities.insert(std::make_pair((m_last_entity + 1), std::set<uint32_t>()));
+    return (++m_last_entity);
 }
 
 size_t ECSManager::register_entity(const Entity entity) {

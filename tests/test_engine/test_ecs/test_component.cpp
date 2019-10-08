@@ -3,13 +3,13 @@
 #include "../../../src/engine/ecs/include/component.h"
 
 struct TestComponent : public Component {
-    static const ComponentType m_type;
+    static const uint32_t m_type;
 
     float x; 
     float y;
 };
 
-const ComponentType TestComponent::m_type = 1;
+const uint32_t TestComponent::m_type = 1;
 
 TEST_CASE("Component Unit Tests", "[ecs][component]") {
     

@@ -5,7 +5,7 @@
 #include "../../../src/engine/ecs/include/manager.h"
 
 struct TestComponentOne : public Component {
-    static const ComponentType m_type;
+    static const uint32_t m_type;
 
     float x; 
     float y;
@@ -14,7 +14,7 @@ struct TestComponentOne : public Component {
 };
 
 struct TestComponentTwo : public Component {
-    static const ComponentType m_type;
+    static const uint32_t m_type;
 
     float vx; 
     float vy;
@@ -22,14 +22,14 @@ struct TestComponentTwo : public Component {
     TestComponentTwo(float aX, float aY) : vx(aX), vy(aY) {}
 };
 
-const ComponentType TestComponentOne::m_type = 1;
-const ComponentType TestComponentTwo::m_type = 2;
+const uint32_t TestComponentOne::m_type = 1;
+const uint32_t TestComponentTwo::m_type = 2;
 
 class SystemMove: public System {
 public:
     SystemMove(ECSManager& manager) :
         System(manager) {
-        ComponentTypeSet required;
+        std::set<uint32_t> required;
         required.insert(TestComponentOne::m_type);
         required.insert(TestComponentTwo::m_type);
         set_required(std::move(required));
@@ -103,7 +103,7 @@ TEST_CASE("System Unit Tests", "[ecs][system]") {
         n = manager.update_entities(0.5f);
         REQUIRE(n == 1);
 
-        TestComponentOne& position = manager.component_store<TestComponentOne>().get(particle);
+        TestComponentOne& position = manager.get_component<TestComponentOne>(particle);
         REQUIRE(position.x == Approx(2.0f));
         REQUIRE(position.y == Approx(2.5f));
     }
