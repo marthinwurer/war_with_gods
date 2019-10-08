@@ -9,6 +9,8 @@ struct TestComponentOne : public Component {
 
     float x; 
     float y;
+
+    TestComponentOne(float aX, float aY) : x(aX), y(aY) {}
 };
 
 struct TestComponentTwo : public Component {
@@ -16,6 +18,8 @@ struct TestComponentTwo : public Component {
 
     float vx; 
     float vy;
+
+    TestComponentTwo(float aX, float aY) : vx(aX), vy(aY) {}
 };
 
 const ComponentType TestComponentOne::m_type = 1;
@@ -47,7 +51,7 @@ TEST_CASE("System Unit Tests", "[ecs][system]") {
 
     REQUIRE(system.required_components().size() == 2);
 
-    SECTION("register_entity()") {
+    SECTION("FUNCTION register_entity()") {
         Entity e = 2;
 
         bool ret = system.register_entity(e);
@@ -58,7 +62,7 @@ TEST_CASE("System Unit Tests", "[ecs][system]") {
         REQUIRE(ret == false);
     }
 
-    SECTION("unregister_entity()") {
+    SECTION("FUNCTION unregister_entity()") {
         Entity e = 2;
 
         bool ret = system.register_entity(e);
@@ -75,5 +79,32 @@ TEST_CASE("System Unit Tests", "[ecs][system]") {
 
         ret = system.unregister_entity(e);
         REQUIRE(ret == false);
+    }
+
+    SECTION("FUNCTION update()") {
+        bool ret = manager.create_component_store<TestComponentOne>();
+        REQUIRE(ret == true);
+        ret = manager.create_component_store<TestComponentTwo>();
+        REQUIRE(ret == true);
+
+        manager.add_system(System::Ptr(new SystemMove(manager)));
+
+        Entity particle = manager.create_entity();
+        REQUIRE(particle == 1);
+
+        ret = manager.add_component(particle, TestComponentOne(1.0f, 1.0f));
+        REQUIRE(ret == true);
+        ret = manager.add_component(particle, TestComponentTwo(2.0f, 3.0f));
+        REQUIRE(ret == true);
+
+        size_t n = manager.register_entity(particle);
+        REQUIRE(n == 1);
+
+        n = manager.update_entities(0.5f);
+        REQUIRE(n == 1);
+
+        TestComponentOne& position = manager.component_store<TestComponentOne>().get(particle);
+        REQUIRE(position.x == Approx(2.0f));
+        REQUIRE(position.y == Approx(2.5f));
     }
 }

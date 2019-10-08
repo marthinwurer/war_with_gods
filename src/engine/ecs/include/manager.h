@@ -42,7 +42,7 @@ public:
         static_assert(std::is_base_of<Component, C>::value, "C must be derived from the Component struct");
         static_assert(C::m_type != invalid_component_type, "C must define a valid non-zero m_type");
     
-        return m_stores.insert(C::m_type, IComponentStore::Ptr(new ComponentStore<C>())).second;
+        return m_stores.insert(std::make_pair(C::m_type, IComponentStore::Ptr(new ComponentStore<C>()))).second;
     }
 
     template<class C> bool add_component(const Entity entity, C&& component) {
