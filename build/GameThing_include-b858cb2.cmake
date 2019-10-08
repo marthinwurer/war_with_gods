@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build/GameThing_tests-b858cb2.cmake")
+  include("C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build/GameThing_tests-b858cb2.cmake")
+else()
+  add_test(GameThing_NOT_BUILT-b858cb2 GameThing_NOT_BUILT-b858cb2)
+endif()
