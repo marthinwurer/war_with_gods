@@ -1,5 +1,0 @@
-add_test( [==[System Unit Tests]==] C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build/GameThing.exe [==[System Unit Tests]==])
-set_tests_properties( [==[System Unit Tests]==] PROPERTIES WORKING_DIRECTORY C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build)
-add_test( [==[Component Unit Tests]==] C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build/GameThing.exe [==[Component Unit Tests]==])
-set_tests_properties( [==[Component Unit Tests]==] PROPERTIES WORKING_DIRECTORY C:/Users/birdi/OneDrive/Desktop/Coding/Projects/war_with_gods/build)
-set( GameThing_TESTS [==[System Unit Tests]==] [==[Component Unit Tests]==])
