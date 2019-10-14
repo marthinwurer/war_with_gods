@@ -1,4 +1,4 @@
-#include <Catch2/catch.hpp>
+#include "Catch2/catch.hpp"
 
 #include "../../../src/engine/ecs/include/component.h"
 
