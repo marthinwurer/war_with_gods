@@ -1,14 +1,12 @@
 #include <cstdio>
 
-#define TEST_BUILD
-
-#ifdef TEST_BUILD
+#ifdef TEST
     #define CATCH_CONFIG_MAIN
     #include <Catch2/catch.hpp>
 #else
 
 int main() {
-    printf("FUCK ME DADDY\n");
+    printf("FUCK ME\n");
     
     return 0;
 }
