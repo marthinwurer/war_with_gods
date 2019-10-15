@@ -28,21 +28,21 @@ Note: Possibility of implementing multi-threading here.
 
 I'm feeling ARPG zelda style but with more combat options.
 
-### Stats
+### Stats `DEV`
 
 Each statistic should have equal beneficial impact on gameplay. There should not be a statistic that does not directly impact play style. My suggestion for stats:
 
-`Constitution` - Defines the character's health. Tanky builds should have high CON.
-`Defense` - Defines how much damage a character takes. Armored builds should habe high DEF.
-`Strength` - Defines how much damage a charcter outputs. 
-`Magic` - Defines how much magic damage a character outputs.
-`Resistance` - Defines how much magic damage a character takes.
-`Speed` - Defines how fast a character moves.
-`Luck` - Defines a characters ability to land crits.
+`CON Constitution` -> Affects unit's total HP.
+`DEF Defense` -> Affects damage calculation on incoming physical damage.
+`STR Strength` -> Affects damage calculation on outoging physical damage. 
+`MAG Magic` -> Affects damage calculation on outgoing magical damage.
+`RES Resistance` -> Affects damage calculation on incoming magical damage.
+`SPD Speed` -> Affects unit's avoidance and movement.
+`LCK Luck` -> Affects unit's critical hit rate.
 
-### Classes `DEV`
+### Jobs and Classes `DEV`
 
-The idea of classes should not be based around what weapons they use but rather their statistics and abilities. All classes should be able to wield all weapons but their statistics should force specific classes to benefit from the use of specific weapons.
+~~The idea of classes should not be based around what weapons they use but rather their statistics and abilities. All classes should be able to wield all weapons but their statistics should force specific classes to benefit from the use of specific weapons.
 
 Classes should be able to progress tiers based on stats not level. This should be achieved by using specific weapon types.
 
@@ -54,17 +54,48 @@ Each tier of class should introduce an element of gameplay strategy. I propose t
 
 *Trainee*: There should only be one trainee class that has basic stats across the board. This should essentially be a blank slate for the player to project themselves onto.
 
-*Novice*: There should be one novice class per weapon type. This should be a class that is unlocked based on stat levels but gives some form of proficiency bonus for using that weapon.
+*Novice*: There should be one novice class per stat type. This should be a class that is unlocked based on stat levels but gives some form of proficiency bonus for using that weapon.
 
-*Advanced*: There should be 2 classes per novice class at this level, however novice classes within the same weapons triangle should share two classes to allow class mobility. The advanced class should not be weapons based but rather statistic or gameplay based. 
+*Advanced*: There should be 2 classes per novice class at this level, however novice classes within the same weapons triangle should share two classes to allow class mobility. The advanced class should not be weapons based but rather statistic or gameplay based.~~
+
+#### Jobs
+
+Jobs define what weapon a unit can use. A unit can only equip one primary job and one secondary job at a time to provide balanced and customizable choice of weapons.
+
+Possible list of jobs:
+- Swordmaster `SWORD`
+- Lancer `LANCE`
+- Axeman `AXE`
+- Archer `BOW`
+- Mage `ELEMENTAL`
+- Priest `HOLY`
+- Shaman `DARK`
+
+#### Classes
+
+Classes define what stats the unit gains benefits and detriments to. I want to build in some sort of "mix and match" functionslity into this system.
+
+Possible list of classes:
+- Warrior - A physical tank `+CON +DEF -RES`
+- Knight - A one-man fortress `+CON +RES -ATK`
+- Assasin - Fast and lethal `+ATK +SPD -DEF`
+- Myrmidon - Strong and lucky `+ATK +LCK -CON`
+- Fighter - Master of melee `+ATK +DEF -RES`
+- Wizard - Master of magic `+MAG +RES -DEF`
+- Sorcerer - Quick spellcaster `+MAG +SPD -CON`
+- Mageknight - A spellsword `+MAG +ATK -SPD`
+- Ranger - Speedy and evasive `+SPD +LCK -DEF`
 
 ### Weapons `DEV`
 
-A classes proficiency with a weapon should be based on it's statistics just as much as the weapon's stats itself.
-
-The big question to answer here is should units benefit from using a weapon that aligns with one of their skills? Or should a unit with certain skill levels suffer less consequences of wielding the weapon?
-
-I'm partial to the latter as it punishes units untrained for their weapon and makes mastering a weapon more rewarding.
+Weapon types are as follows:
+- Sword - Balanced weapon speed and damage 
+- Lance - Fast weapon speed
+- Axe - High damage output
+- Bow - Provides range, what else do you want?
+- Elemental - Higher damage. Fire, Lightning, Ice
+- Holy - Self-buffs, healing, etc
+- Shadow - De-buffs, bleeding damage, etc
 
 #### Weapon Triangles `DEV`
 
